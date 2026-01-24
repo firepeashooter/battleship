@@ -19,7 +19,7 @@ test('Getting Sunk Exactly', () => {
 	myShip.hit();
 	myShip.hit();
 
-	expect(myShip.isSunk).toBe(true);
+	expect(myShip.isSunk()).toBe(true);
 })
 
 test('Getting Sunk Overkill', () => {
@@ -30,7 +30,7 @@ test('Getting Sunk Overkill', () => {
 	myShip.hit();
 	myShip.hit();
 
-	expect(myShip.isSunk).toBe(true);
+	expect(myShip.isSunk()).toBe(true);
 })
 
 
@@ -40,5 +40,5 @@ test('Not Sunk', () => {
 
 	myShip.hit();
 
-	expect(myShip.isSunk).toBe(false);
+	expect(myShip.isSunk()).toBe(false);
 })
