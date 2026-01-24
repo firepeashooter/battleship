@@ -1,6 +1,8 @@
+import { Ship } from "./ship.js";
+
 test('Getting Hit', () => {
 
-	myShip = new Ship();
+	let myShip = new Ship(5);
 
 	myShip.hit();
 	myShip.hit();
@@ -9,9 +11,9 @@ test('Getting Hit', () => {
 });
 
 
-test('Getting Sunk', () => {
+test('Getting Sunk Exactly', () => {
 
-	myShip = new Ship();
+	let myShip = new Ship(3);
 
 	myShip.hit();
 	myShip.hit();
@@ -20,11 +22,23 @@ test('Getting Sunk', () => {
 	expect(myShip.isSunk).toBe(true);
 })
 
+test('Getting Sunk Overkill', () => {
+
+	let myShip = new Ship(1);
+
+	myShip.hit();
+	myShip.hit();
+	myShip.hit();
+
+	expect(myShip.isSunk).toBe(true);
+})
+
+
 test('Not Sunk', () => {
 
-	myShip = new Ship();
+	let myShip = new Ship(5);
 
 	myShip.hit();
 
-	expect(myship.isSunk).toBe(false);
+	expect(myShip.isSunk).toBe(false);
 })
