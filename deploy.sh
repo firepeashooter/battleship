@@ -4,6 +4,12 @@
 #!/usr/bin/env bash
 set -e  # stop immediately if any command fails
 
+# Create gh-pages branch if it doesn't exist
+if ! git show-ref --verify --quiet refs/heads/gh-pages; then
+  echo "gh-pages branch doesn't exist. Creating it..."
+  git branch gh-pages
+fi
+
 # Check for uncommitted changes
 if [[ -n $(git status --porcelain) ]]; then
   echo "Your working tree is dirty. Commit your changes before deploying."
