@@ -14,7 +14,7 @@ echo "Switching to gh-pages branch..."
 git checkout gh-pages
 
 echo "Merging latest changes from main..."
-git merge main --allow-unrelated-histories --no-edit
+git merge main --no-edit
 
 echo "Building project..."
 npm run build
