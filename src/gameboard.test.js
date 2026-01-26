@@ -1,3 +1,4 @@
+import { Gameboard } from "./gameboard.js";
 
 test('Creating a Gameboard', () => {
 
