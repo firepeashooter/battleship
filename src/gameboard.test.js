@@ -25,6 +25,8 @@ test('Creating a Gameboard 2', () => {
 		[0, 0, 0]]);
 })
 
+//------------------------------------------------------------------------------------------------------------------------
+//Gameboard.placeShip() Tests
 
 test('Placing one Ship', () => {
 
@@ -42,6 +44,9 @@ test('Placing one Ship', () => {
 	expect(myGameboard.board[3][4]).toBe(myShip);
 	expect(myGameboard.board[4][4]).toBe(myShip);
 	expect(myGameboard.board[5][4]).toBe(myShip);
+
+	//Check that the gameboard tracks the number of ships
+	expect(myGameboard.numShips).toBe(1);
 
 
 })
@@ -71,6 +76,9 @@ test('Placing two Ships', () => {
 	expect(myGameboard.board[0][1]).toBe(myShip);
 	expect(myGameboard.board[0][2]).toBe(myShip);
 	expect(myGameboard.board[0][3]).toBe(myShip);
+
+	//Check that the gameboard tracks the number of ships
+	expect(myGameboard.numShips).toBe(2);
 })
 
 test('Placing ships outside the board from within', () => {
@@ -128,7 +136,86 @@ test('Placing two overlapping ships', () => {
 	expect(myGameboard.board[0][3]).toBe(0);
 })
 
+//------------------------------------------------------------------------------------------------------------------------
+//Gameboard.receiveAttack() Tests
 
+test('Testing Misses', () => {
+
+	//Create a board with a ship
+	let myGameboard = new Gameboard(10);
+
+	let myShip = new Ship(3);
+	let coordinate = [3, 3];
+	let direction = 'v';
+
+
+	myGameboard.placeShip(coordinate, direction, myShip);
+
+	expect(myGameboard.recieveAttack([0, 0])).toBe('Miss');
+	expect(myGameboard.recieveAttack([8, 7])).toBe('Miss');
+
+	expect(myGameboard.board[0, 0]).toBe('Miss');
+	expect(myGameboard.board[8, 7]).toBe('Miss');
+})
+
+test('Testing Hits', () => {
+
+	//Create a board with a ship
+	let myGameboard = new Gameboard(10);
+
+	let myShip = new Ship(3);
+	let coordinate = [3, 3];
+	let direction = 'v';
+
+	myGameboard.placeShip(coordinate, direction, myShip);
+
+	//Check to see if the ship hits get updated.
+	expect(myShip.hits).toBe(0);
+
+	expect(myGameboard.recieveAttack([3, 3])).toBe('Hit');
+	expect(myGameboard.recieveAttack([4, 3])).toBe('Hit');
+
+	expect(myShip.hits).toBe(2);
+
+})
+
+test('Testing Sinking', () => {
+	//
+	//Create a board with a ship
+	let myGameboard = new Gameboard(10);
+
+	let myShip = new Ship(2);
+	let coordinate = [3, 3];
+	let direction = 'v';
+
+	myGameboard.placeShip(coordinate, direction, myShip);
+
+	expect(myShip.hits).toBe(0);
+
+	expect(myGameboard.recieveAttack([3, 3])).toBe('Hit');
+	expect(myGameboard.recieveAttack([4, 3])).toBe('Hit');
+
+	expect(myShip.hits).toBe(2);
+
+	expect(myShip.isSunk()).toBe(true);
+
+	expect(myGameboard.numShips).toBe(0);
+
+
+
+})
+
+test('Testing Tracking Coords', () => {
+
+	let myGameboard = new Gameboard();
+
+	myGameboard.recieveAttack([3, 3]);
+	myGameboard.recieveAttack([2, 4]);
+
+	expect(myGameboard.visited).toContain([3, 3]);
+	expect(myGameboard.visited).toContain([2, 4]);
+
+})
 
 
 
