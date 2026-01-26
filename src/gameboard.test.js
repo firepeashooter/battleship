@@ -156,8 +156,8 @@ test('Testing Misses', () => {
 	expect(myGameboard.recieveAttack([0, 0])).toBe('Miss');
 	expect(myGameboard.recieveAttack([8, 7])).toBe('Miss');
 
-	expect(myGameboard.board[0, 0]).toBe('Miss');
-	expect(myGameboard.board[8, 7]).toBe('Miss');
+	expect(myGameboard.board[0][0]).toBe('Miss');
+	expect(myGameboard.board[8][7]).toBe('Miss');
 })
 
 test('Testing Hits', () => {
@@ -209,13 +209,13 @@ test('Testing Sinking', () => {
 
 test('Testing Tracking Coords', () => {
 
-	let myGameboard = new Gameboard();
+	let myGameboard = new Gameboard(5);
 
 	myGameboard.recieveAttack([3, 3]);
 	myGameboard.recieveAttack([2, 4]);
 
-	expect(myGameboard.visited).toContain([3, 3]);
-	expect(myGameboard.visited).toContain([2, 4]);
+	expect(myGameboard.visited).toContainEqual([3, 3]);
+	expect(myGameboard.visited).toContainEqual([2, 4]);
 
 })
 

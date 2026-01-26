@@ -52,8 +52,57 @@ export class Gameboard {
 		}
 		this.numShips++;
 	}
+	/**
+	* Updates a cell or ship on the gameboard
+	*
+	* @param {array} coordinate - [x, y] coordinate array
+	* @returns {String} - 'Miss' if the attack is a miss
+	* 					- 'Hit' if the attack is a hit
+	*/
+	recieveAttack(coordinate) {
+
+		let x = coordinate[0];
+		let y = coordinate[1];
+
+		if (x < 0 || y < 0) {
+			throw new Error("Attack is out of Bounds");
+		}
+		if (x >= this.size || y >= this.size) {
+			throw new Error("Attack is out of Bounds");
+		}
+
+		this.visited.push(coordinate);
+
+		//Attack misses
+		if (this.board[x][y] === 0) {
+			this.board[x][y] = 'Miss';
+			return 'Miss';
+		}
+
+		//Attack hits
+		if (this.board[x][y] instanceof Ship) {
+			this.board[x][y].hit();
+			//if sunk then decrement number of ships on the board
+			if (this.board[x][y].isSunk()) {
+				this.numShips--;
+
+				//check to see if the game is over
+				if (this.numShips === 0) {
+					this.gameOver = true;
+				}
+			}
+		}
+
+
+		return 'Hit';
+	}
 
 
 
 
 }
+
+
+
+
+
