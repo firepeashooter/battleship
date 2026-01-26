@@ -1,4 +1,5 @@
 import { Gameboard } from "./gameboard.js";
+import { Ship } from "./scripts/ship.js";
 
 test('Creating a Gameboard', () => {
 
@@ -73,10 +74,10 @@ test('Placing two Ships', () => {
 	expect(myGameboard.board[6][5]).toBe(myShip);
 	expect(myGameboard.board[7][5]).toBe(myShip);
 
-	expect(myGameboard.board[0][0]).toBe(myShip);
-	expect(myGameboard.board[0][1]).toBe(myShip);
-	expect(myGameboard.board[0][2]).toBe(myShip);
-	expect(myGameboard.board[0][3]).toBe(myShip);
+	expect(myGameboard.board[0][0]).toBe(mySecondShip);
+	expect(myGameboard.board[0][1]).toBe(mySecondShip);
+	expect(myGameboard.board[0][2]).toBe(mySecondShip);
+	expect(myGameboard.board[0][3]).toBe(mySecondShip);
 
 	//Check that the gameboard tracks the number of ships
 	expect(myGameboard.numShips).toBe(2);
@@ -92,7 +93,7 @@ test('Placing ships outside the board from within', () => {
 	let directionOne = 'h';
 
 	//Place the ships
-	expect(myGameboard.placeShip(coordinateOne, directionOne, myShip)).toThrow("Ship Placement Out of Bounds");
+	expect(() => myGameboard.placeShip(coordinateOne, directionOne, myShip)).toThrow("Ship Placement Out of Bounds");
 })
 
 test('Placing ships outside the board from without', () => {
@@ -105,7 +106,7 @@ test('Placing ships outside the board from without', () => {
 	let directionOne = 'v';
 
 	//Place the ships
-	expect(myGameboard.placeShip(coordinateOne, directionOne, myShip)).toThrow("Ship Placement Out of Bounds");
+	expect(() => myGameboard.placeShip(coordinateOne, directionOne, myShip)).toThrow("Ship Placement Out of Bounds");
 })
 
 test('Placing two overlapping ships', () => {
@@ -123,12 +124,12 @@ test('Placing two overlapping ships', () => {
 	//Place the ships
 	myGameboard.placeShip(coordinateOne, directionOne, myShip);
 
-	expect(myGameboard.placeShip(coordinateTwo, directionTwo, mySecondShip)).toThrow("Ship Placement Overlaps another Ship");
+	expect(() => myGameboard.placeShip(coordinateTwo, directionTwo, mySecondShip)).toThrow("Ship Placement Overlaps another Ship");
 
 	//check that the ships are correctly placed
-	expect(myGameboard.board[5][5]).toBe(myShip);
-	expect(myGameboard.board[6][5]).toBe(myShip);
-	expect(myGameboard.board[7][5]).toBe(myShip);
+	expect(myGameboard.board[2][2]).toBe(myShip);
+	expect(myGameboard.board[3][2]).toBe(myShip);
+	expect(myGameboard.board[4][2]).toBe(myShip);
 
 	//The ship did not get placed
 	expect(myGameboard.board[0][0]).toBe(0);
