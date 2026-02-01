@@ -94,6 +94,14 @@ export class Gameboard {
 		}
 		return 'Hit';
 	}
+
+	gameOver() {
+		return this.gameOver;
+	}
+
+	getBoard() {
+		return this.board;
+	}
 }
 
 
