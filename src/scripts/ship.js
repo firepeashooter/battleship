@@ -14,6 +14,14 @@ export class Ship {
 		return (this.hits >= this.length);
 	}
 
+	getLength() {
+		return this.length;
+	}
+
+	getHits() {
+		return this.hits;
+	}
+
 
 
 }
