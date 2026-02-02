@@ -1,9 +1,10 @@
 import { GameController } from "./gameController"
+import { Ship } from "./ship";
 
 
 //Testing Creating GameController
 
-test('Creating a Gameboard', () => {
+test('Creating a GameController', () => {
 
 	let controller = new GameController('Ben', 'Finnley');
 
@@ -30,3 +31,38 @@ test('Switching Player Turn', () => {
 
 	expect(controller.curPlayer).toBe(controller.players[0]);
 })
+
+
+//Testing resetGame()
+
+test("Resetting Game", () => {
+
+	let controller = new GameController('Ben', 'Finnley');
+
+	let myShip = new Ship(3);
+
+	controller.players[0].gameBoard.placeShip([3, 4], 'h', myShip);
+
+	controller.switchPlayerTurn();
+
+	controller.resetGame();
+
+	expect(controller.curPlayer).toBe(controller.curPlayer[0]);
+
+	expect(controller.players[0].gameBoard.getBoard()[3][4]).toBe(0);
+
+	expect(controller.players[0].gameBoard.getBoard()[3][5]).toBe(0);
+
+	expect(controller.players[0].gameBoard.getBoard()[3][6]).toBe(0);
+})
+
+
+
+
+
+
+
+
+
+
+
