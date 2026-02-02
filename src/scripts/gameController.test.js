@@ -141,7 +141,27 @@ test('Testing Generating a Random Attack for P2', () => {
 	}
 })
 
+function createActiveGame() {
 
+	const controller = new GameController('Ben', 'Finnley');
+
+	const bensShip = new Ship(2);
+	const finnleysShip = new Ship(3);
+
+	controller.players[0].gameBoard.placeShip([2, 2], 'v', bensShip);
+
+	controller.players[1].gameBoard.placeShip([5, 5], 'v', finnleysShip);
+
+	return controller;
+}
+
+//Testing playRound()
+
+test('Testing Normal Play Round with Hit return', () => {
+
+
+
+})
 
 
 
