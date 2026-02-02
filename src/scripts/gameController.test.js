@@ -13,3 +13,20 @@ test('Creating a Gameboard', () => {
 	expect(controller.players[0].gameBoard.getBoard()[1][1]).toBe(0);
 
 })
+
+//Testing switchPlayerTurn()
+
+test('Switching Player Turn', () => {
+
+	let controller = new GameController('Ben', 'Finnley');
+
+	expect(controller.curPlayer).toBe(controller.players[0]);
+
+	controller.switchPlayerTurn();
+
+	expect(controller.curPlayer).toBe(controller.players[1]);
+
+	controller.switchPlayerTurn();
+
+	expect(controller.curPlayer).toBe(controller.players[0]);
+})
