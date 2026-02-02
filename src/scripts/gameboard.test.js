@@ -245,7 +245,38 @@ test('Testing all Ships Sunk', () => {
 })
 
 
+//------------------------------------------------------------------------------------------------------------------------
+//gameboard.resetBoard() tests
 
+
+test('Resetting the Gameboard', () => {
+
+	//Create a board with a ship
+	let myGameboard = new Gameboard(10);
+
+	let myShip = new Ship(2);
+	let mySecondShip = new Ship(3);
+
+	myGameboard.placeShip([3, 3], 'v', myShip);
+	myGameboard.placeShip([8, 1], 'h', mySecondShip);
+
+	expect(myGameboard.recieveAttack([3, 3])).toBe('Hit');
+
+	expect(myGameboard.recieveAttack([1, 1])).toBe('Hit');
+	e
+
+	expect(myGameboard.getBoard()[1][1]).toBe('Miss');
+
+	expect(myGameboard.getBoard()[3][3]).toBe('Hit');
+
+	myGameboard.resetBoard();
+
+	expect(myGameboard.getBoard()[1][1]).toBe(0);
+	expect(myGameboard.getBoard()[3][3]).toBe(0);
+
+
+
+})
 
 
 
