@@ -6,7 +6,7 @@ export class Gameboard {
 		this.board = Array.from({ length: size }, () => Array(size).fill(0));
 		this.size = size;
 		this.numShips = 0;
-		this.visited = [];
+		this.visited = new Set();
 		this.gameOver = false;
 	}
 
@@ -63,6 +63,7 @@ export class Gameboard {
 
 		let x = coordinate[0];
 		let y = coordinate[1];
+		const key = `${x},${y}`;
 
 		if (x < 0 || y < 0) {
 			throw new Error("Attack is out of Bounds");
@@ -70,8 +71,11 @@ export class Gameboard {
 		if (x >= this.size || y >= this.size) {
 			throw new Error("Attack is out of Bounds");
 		}
+		if (this.visited.has(key)) {
+			throw new Error("Already Attacked Square");
+		}
 
-		this.visited.push(coordinate);
+		this.visited.add(key);
 
 		//Attack misses
 		if (this.board[x][y] === 0) {

@@ -181,6 +181,57 @@ test('Testing Hits', () => {
 
 })
 
+test('Multiple Attacks on Same Square', () => {
+	//Create a board with a ship
+	let myGameboard = new Gameboard(10);
+
+	let myShip = new Ship(3);
+	let coordinate = [3, 3];
+	let direction = 'v';
+
+	myGameboard.placeShip(coordinate, direction, myShip);
+
+	expect(myGameboard.recieveAttack([3, 3])).toBe('Hit');
+
+	expect(() => {
+		myGameboard.recieveAttack([3, 3]);
+	}).toThrow('Already Attacked Square');
+
+
+
+})
+
+test('Test Invalid Coordinates Positive', () => {
+	//Create a board with a ship
+	let myGameboard = new Gameboard(10);
+
+	let myShip = new Ship(3);
+	let coordinate = [3, 3];
+	let direction = 'v';
+
+	myGameboard.placeShip(coordinate, direction, myShip);
+
+	expect(() => {
+		myGameboard.recieveAttack([20, 15]);
+	}).toThrow('Attack is out of Bounds');
+})
+
+test('Test Invalid Coordinates Negative', () => {
+	//Create a board with a ship
+	let myGameboard = new Gameboard(10);
+
+	let myShip = new Ship(3);
+	let coordinate = [3, 3];
+	let direction = 'v';
+
+	myGameboard.placeShip(coordinate, direction, myShip);
+
+	expect(() => {
+		myGameboard.recieveAttack([-5, -15]);
+	}).toThrow('Attack is out of Bounds');
+})
+
+
 test('Testing Sinking', () => {
 	//
 	//Create a board with a ship
@@ -214,8 +265,8 @@ test('Testing Tracking Coords', () => {
 	myGameboard.recieveAttack([3, 3]);
 	myGameboard.recieveAttack([2, 4]);
 
-	expect(myGameboard.visited).toContainEqual([3, 3]);
-	expect(myGameboard.visited).toContainEqual([2, 4]);
+	expect(myGameboard.visited.has("3,3")).toBe(true);
+	expect(myGameboard.visited.has("2,4")).toBe(true);
 
 })
 
@@ -272,10 +323,10 @@ test('Resetting the Gameboard', () => {
 
 	expect(myGameboard.getBoard()[1][1]).toBe(0);
 	expect(myGameboard.getBoard()[3][3]).toBe(0);
-
-
-
 })
+
+
+
 
 
 
