@@ -53,4 +53,12 @@ export class GameController {
 
 
 	}
+
+	playRound() {
+
+	}
+
+	getCurrentPlayer() {
+		return this.curPlayer;
+	}
 }
