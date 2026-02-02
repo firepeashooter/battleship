@@ -77,9 +77,69 @@ test("Resetting Game for Player 2", () => {
 })
 
 
+//Testing generateRandomAttack(){
+
+test('Testing Generating a Random Attack for P1', () => {
+
+	let controller = new GameController('Ben', 'Finnley');
+
+	controller.players[1].gameBoard.visited.add('3,4')
+	controller.players[1].gameBoard.visited.add('3,5')
+
+	//generate 10 random coords and make sure they adhere to the rules -- 
+
+	for (let i = 0; i < 10; i++) {
+
+		//Generates a coordinate for player 2s board
+		let randCoord = controller.generateRandomAttack(controller.players[1].gameBoard);
+
+		let x = randCoord[0]
+		let y = randCoord[1]
+		const key = `${x},${y}`;
 
 
+		//Generated Coordinate isn't in players visited set
+		expect(controller.players[1].gameBoard.visited.has(key)).toBe(false);
 
+		//Generated Coordinate is within bounds of the board
+		expect(x >= 0 && y >= 0).toBe(true);
+		expect(x < controller.players[0].gameBoard.size && y < controller.players[0].gameBoard.size).toBe(true);
+
+	}
+
+
+})
+
+test('Testing Generating a Random Attack for P2', () => {
+
+	let controller = new GameController('Ben', 'Finnley');
+
+	controller.players[0].gameBoard.visited.add('3,4')
+	controller.players[0].gameBoard.visited.add('3,5')
+	controller.players[0].gameBoard.visited.add('3,6')
+	controller.players[0].gameBoard.visited.add('3,7')
+	controller.players[0].gameBoard.visited.add('3,8')
+
+	//generate 10 random coords and make sure they adhere to the rules -- 
+
+	for (let i = 0; i < 10; i++) {
+
+		//Generates a coordinate for player 2s board
+		let randCoord = controller.generateRandomAttack(controller.players[0].gameBoard);
+
+		let x = randCoord[0]
+		let y = randCoord[1]
+		const key = `${x},${y}`;
+
+
+		//Generated Coordinate isn't in players visited set
+		expect(controller.players[0].gameBoard.visited.has(key)).toBe(false);
+
+		//Generated Coordinate is within bounds of the board
+		expect(x >= 0 && y >= 0).toBe(true);
+		expect(x < controller.players[0].gameBoard.size && y < controller.players[0].gameBoard.size).toBe(true);
+	}
+})
 
 
 
