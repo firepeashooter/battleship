@@ -30,4 +30,27 @@ export class GameController {
 		//reset player 2 gameboard
 		this.players[1].gameBoard.resetBoard();
 	}
+
+	//Generate a random valid coodinate by looking at board
+	generateRandomAttack(board) {
+
+		let x;
+		let y;
+		let key;
+
+		//Generate a random coordinate that is within size and not in the board's visited list
+
+		do {
+			x = Math.floor(Math.random() * board.size);
+			y = Math.floor(Math.random() * board.size);
+			key = `${x},${y}`;
+
+
+		} while (board.visited.has(key));
+
+		console.log([x, y]);
+		return [x, y];
+
+
+	}
 }
