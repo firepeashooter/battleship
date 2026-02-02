@@ -44,8 +44,8 @@ test('Placing one Ship', () => {
 
 	//check that the ship is actually where it should be
 	expect(myGameboard.board[3][4]).toBe(myShip);
-	expect(myGameboard.board[4][4]).toBe(myShip);
-	expect(myGameboard.board[5][4]).toBe(myShip);
+	expect(myGameboard.board[3][5]).toBe(myShip);
+	expect(myGameboard.board[3][6]).toBe(myShip);
 
 	//Check that the gameboard tracks the number of ships
 	expect(myGameboard.numShips).toBe(1);
@@ -71,13 +71,13 @@ test('Placing two Ships', () => {
 
 	//check that the ships are correctly placed
 	expect(myGameboard.board[5][5]).toBe(myShip);
-	expect(myGameboard.board[6][5]).toBe(myShip);
-	expect(myGameboard.board[7][5]).toBe(myShip);
+	expect(myGameboard.board[5][6]).toBe(myShip);
+	expect(myGameboard.board[5][7]).toBe(myShip);
 
 	expect(myGameboard.board[0][0]).toBe(mySecondShip);
-	expect(myGameboard.board[0][1]).toBe(mySecondShip);
-	expect(myGameboard.board[0][2]).toBe(mySecondShip);
-	expect(myGameboard.board[0][3]).toBe(mySecondShip);
+	expect(myGameboard.board[1][0]).toBe(mySecondShip);
+	expect(myGameboard.board[2][0]).toBe(mySecondShip);
+	expect(myGameboard.board[3][0]).toBe(mySecondShip);
 
 	//Check that the gameboard tracks the number of ships
 	expect(myGameboard.numShips).toBe(2);
@@ -116,8 +116,8 @@ test('Placing two overlapping ships', () => {
 	let myShip = new Ship(3);
 	let mySecondShip = new Ship(4);
 
-	let coordinateOne = [2, 2];
-	let coordinateTwo = [3, 1];
+	let coordinateOne = [2, 1];
+	let coordinateTwo = [2, 1];
 	let directionOne = 'v';
 	let directionTwo = 'h';
 
@@ -127,15 +127,15 @@ test('Placing two overlapping ships', () => {
 	expect(() => myGameboard.placeShip(coordinateTwo, directionTwo, mySecondShip)).toThrow("Ship Placement Overlaps another Ship");
 
 	//check that the ships are correctly placed
+	expect(myGameboard.board[2][1]).toBe(myShip);
 	expect(myGameboard.board[2][2]).toBe(myShip);
-	expect(myGameboard.board[3][2]).toBe(myShip);
-	expect(myGameboard.board[4][2]).toBe(myShip);
+	expect(myGameboard.board[2][3]).toBe(myShip);
 
 	//The ship did not get placed
-	expect(myGameboard.board[0][0]).toBe(0);
-	expect(myGameboard.board[0][1]).toBe(0);
-	expect(myGameboard.board[0][2]).toBe(0);
-	expect(myGameboard.board[0][3]).toBe(0);
+	expect(myGameboard.board[2][1]).toBe(myShip);
+	expect(myGameboard.board[3][1]).toBe(0);
+	expect(myGameboard.board[4][1]).toBe(0);
+	expect(myGameboard.board[5][1]).toBe(0);
 })
 
 //------------------------------------------------------------------------------------------------------------------------
@@ -175,7 +175,7 @@ test('Testing Hits', () => {
 	expect(myShip.hits).toBe(0);
 
 	expect(myGameboard.recieveAttack([3, 3])).toBe('Hit');
-	expect(myGameboard.recieveAttack([4, 3])).toBe('Hit');
+	expect(myGameboard.recieveAttack([3, 4])).toBe('Hit');
 
 	expect(myShip.hits).toBe(2);
 
@@ -241,12 +241,12 @@ test('Testing Sinking', () => {
 	let mySecondShip = new Ship(3);
 
 	myGameboard.placeShip([3, 3], 'v', myShip);
-	myGameboard.placeShip([8, 1], 'h', mySecondShip);
+	myGameboard.placeShip([1, 7], 'h', mySecondShip);
 
 	expect(myShip.hits).toBe(0);
 
 	expect(myGameboard.recieveAttack([3, 3])).toBe('Hit');
-	expect(myGameboard.recieveAttack([4, 3])).toBe('Hit');
+	expect(myGameboard.recieveAttack([3, 4])).toBe('Hit');
 
 	expect(myShip.hits).toBe(2);
 
@@ -279,14 +279,14 @@ test('Testing all Ships Sunk', () => {
 	let mySecondShip = new Ship(3);
 
 	myGameboard.placeShip([3, 3], 'v', myShip);
-	myGameboard.placeShip([8, 1], 'h', mySecondShip);
+	myGameboard.placeShip([5, 1], 'h', mySecondShip);
 
 	expect(myGameboard.recieveAttack([3, 3])).toBe('Hit');
-	expect(myGameboard.recieveAttack([4, 3])).toBe('Hit');
+	expect(myGameboard.recieveAttack([3, 4])).toBe('Hit');
 
-	expect(myGameboard.recieveAttack([8, 1])).toBe('Hit');
-	expect(myGameboard.recieveAttack([8, 2])).toBe('Hit');
-	expect(myGameboard.recieveAttack([8, 3])).toBe('Hit');
+	expect(myGameboard.recieveAttack([5, 1])).toBe('Hit');
+	expect(myGameboard.recieveAttack([6, 1])).toBe('Hit');
+	expect(myGameboard.recieveAttack([7, 1])).toBe('Hit');
 
 	expect(myShip.isSunk()).toBe(true);
 	expect(mySecondShip.isSunk()).toBe(true);

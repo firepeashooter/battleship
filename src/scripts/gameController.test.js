@@ -192,10 +192,10 @@ test('Testing Normal Play Round with Winning Player return for player 1', () => 
 
 	//Should return an active game with two placed ships
 	controller = createActiveGame();
-	//Should be a miss because there is a miss on finnley's board
+
 	expect(controller.playRound([5, 5])).toBe('Hit');
-	expect(controller.playRound([5, 6])).toBe('Hit');
-	expect(controller.playRound([5, 7])).toBe('PlayerOne Wins!');
+	expect(controller.playRound([6, 5])).toBe('Hit');
+	expect(controller.playRound([7, 5])).toBe(controller.players[0]);
 
 })
 
@@ -206,7 +206,7 @@ test('Testing Normal Play Round with Winning Player return for player 2', () => 
 	controller.switchPlayerTurn();
 	//Should be a miss because there is a miss on finnley's board
 	expect(controller.playRound([2, 2])).toBe('Hit');
-	expect(controller.playRound([2, 3])).toBe('PlayerTwo Wins!');
+	expect(controller.playRound([2, 3])).toBe(controller.players[1]);
 
 })
 

@@ -39,7 +39,7 @@ export class Gameboard {
 
 		for (let i = 0; i < ship.length; i++) {
 
-			if (direction === 'h') {
+			if (direction === 'v') {
 
 				if (isValidCoord(x, y + i)) {
 					this.board[x][y + i] = ship;

@@ -45,16 +45,29 @@ export class GameController {
 			y = Math.floor(Math.random() * board.size);
 			key = `${x},${y}`;
 
-
 		} while (board.visited.has(key));
-
-		console.log([x, y]);
 		return [x, y];
 
 
 	}
 
-	playRound() {
+	playRound(coordinate) {
+
+		let otherPlayer;
+
+		if (this.curPlayer == this.players[0]) {
+			otherPlayer = this.players[1];
+		} else if (this.curPlayer == this.players[1]) {
+			otherPlayer = this.players[0];
+		}
+
+		let exitCode = otherPlayer.gameBoard.recieveAttack(coordinate);
+
+		if (otherPlayer.gameBoard.getGameOver()) {
+			return this.curPlayer;
+		}
+
+		return exitCode;
 
 	}
 
