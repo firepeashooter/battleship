@@ -95,7 +95,21 @@ export class Gameboard {
 		return 'Hit';
 	}
 
-	gameOver() {
+	/**
+	* Resets the gameboard so all the cells are 0
+	*/
+	resetBoard() {
+
+		for (let i = 0; i < this.size; i++) {
+			for (let j = 0; j < this.size; j++) {
+				this.board[i][j] = 0;
+			}
+		}
+
+
+	}
+
+	getGameOver() {
 		return this.gameOver;
 	}
 
