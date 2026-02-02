@@ -35,7 +35,7 @@ test('Switching Player Turn', () => {
 
 //Testing resetGame()
 
-test("Resetting Game", () => {
+test("Resetting Game for Player 1", () => {
 
 	let controller = new GameController('Ben', 'Finnley');
 
@@ -56,6 +56,25 @@ test("Resetting Game", () => {
 	expect(controller.players[0].gameBoard.getBoard()[3][6]).toBe(0);
 })
 
+test("Resetting Game for Player 2", () => {
+
+	let controller = new GameController('Ben', 'Finnley');
+
+	let myShip = new Ship(2);
+
+	controller.players[1].gameBoard.placeShip([4, 4], 'h', myShip);
+
+	controller.switchPlayerTurn();
+
+	controller.resetGame();
+
+	expect(controller.curPlayer).toBe(controller.curPlayer[0]);
+
+	expect(controller.players[1].gameBoard.getBoard()[3][4]).toBe(0);
+
+	expect(controller.players[1].gameBoard.getBoard()[3][5]).toBe(0);
+
+})
 
 
 
