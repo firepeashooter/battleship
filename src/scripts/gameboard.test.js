@@ -258,16 +258,15 @@ test('Resetting the Gameboard', () => {
 	let mySecondShip = new Ship(3);
 
 	myGameboard.placeShip([3, 3], 'v', myShip);
-	myGameboard.placeShip([8, 1], 'h', mySecondShip);
 
 	expect(myGameboard.recieveAttack([3, 3])).toBe('Hit');
 
-	expect(myGameboard.recieveAttack([1, 1])).toBe('Hit');
-	e
+	myGameboard.recieveAttack([1, 1]);
+
 
 	expect(myGameboard.getBoard()[1][1]).toBe('Miss');
 
-	expect(myGameboard.getBoard()[3][3]).toBe('Hit');
+	expect(myGameboard.getBoard()[3][3]).toBe(myShip);
 
 	myGameboard.resetBoard();
 
