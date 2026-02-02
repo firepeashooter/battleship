@@ -17,6 +17,17 @@ export class GameController {
 		} else if (this.curPlayer === this.players[1]) {
 			this.curPlayer = this.players[0]
 		}
+	}
 
+	resetGame() {
+
+		//set the current player to player 1
+		this.curPlayer = this.players[0];
+
+		//reset player 1 gameboard
+		this.players[0].gameBoard.resetBoard();
+
+		//reset player 2 gameboard
+		this.players[1].gameBoard.resetBoard();
 	}
 }

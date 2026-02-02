@@ -47,7 +47,7 @@ test("Resetting Game for Player 1", () => {
 
 	controller.resetGame();
 
-	expect(controller.curPlayer).toBe(controller.curPlayer[0]);
+	expect(controller.curPlayer).toBe(controller.players[0]);
 
 	expect(controller.players[0].gameBoard.getBoard()[3][4]).toBe(0);
 
@@ -68,7 +68,7 @@ test("Resetting Game for Player 2", () => {
 
 	controller.resetGame();
 
-	expect(controller.curPlayer).toBe(controller.curPlayer[0]);
+	expect(controller.curPlayer).toBe(controller.players[0]);
 
 	expect(controller.players[1].gameBoard.getBoard()[3][4]).toBe(0);
 
