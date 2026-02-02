@@ -150,18 +150,64 @@ function createActiveGame() {
 
 	controller.players[0].gameBoard.placeShip([2, 2], 'v', bensShip);
 
-	controller.players[1].gameBoard.placeShip([5, 5], 'v', finnleysShip);
+	controller.players[1].gameBoard.placeShip([5, 5], 'h', finnleysShip);
 
 	return controller;
 }
 
 //Testing playRound()
 
-test('Testing Normal Play Round with Hit return', () => {
+test('Testing Normal Play Round with Miss return', () => {
 
+	//Should return an active game with two placed ships
+	controller = createActiveGame();
+	//Should be a miss because there is a miss on finnley's board
+	expect(controller.playRound([2, 2])).toBe('Miss');
+
+	expect(controller.players[1].gameBoard.getBoard()[2][2]).toBe('Miss');
 
 
 })
 
+test('Testing Normal Play Round with Hit return', () => {
+
+	//Should return an active game with two placed ships
+	controller = createActiveGame();
+	//Should be a miss because there is a miss on finnley's board
+	expect(controller.playRound([5, 5])).toBe('Hit');
+
+})
+
+test('Testing Normal Play Round with Hit return for player 2', () => {
+
+	//Should return an active game with two placed ships
+	controller = createActiveGame();
+	controller.switchPlayerTurn();
+	//Should be a miss because there is a miss on ben's board
+	expect(controller.playRound([2, 2])).toBe('Hit');
+})
+
+
+test('Testing Normal Play Round with Winning Player return for player 1', () => {
+
+	//Should return an active game with two placed ships
+	controller = createActiveGame();
+	//Should be a miss because there is a miss on finnley's board
+	expect(controller.playRound([5, 5])).toBe('Hit');
+	expect(controller.playRound([5, 6])).toBe('Hit');
+	expect(controller.playRound([5, 7])).toBe('PlayerOne Wins!');
+
+})
+
+test('Testing Normal Play Round with Winning Player return for player 2', () => {
+
+	//Should return an active game with two placed ships
+	controller = createActiveGame();
+	controller.switchPlayerTurn();
+	//Should be a miss because there is a miss on finnley's board
+	expect(controller.playRound([2, 2])).toBe('Hit');
+	expect(controller.playRound([2, 3])).toBe('PlayerTwo Wins!');
+
+})
 
 
