@@ -10,6 +10,9 @@ export class GameController {
 		this.curPlayer = this.players[0];
 	}
 
+	/**
+	* Switches the current active player to the other player
+	*/
 	switchPlayerTurn() {
 
 		if (this.curPlayer === this.players[0]) {
@@ -19,6 +22,10 @@ export class GameController {
 		}
 	}
 
+	/**
+	* Resets the whole game by setting the first player
+	* as the active player and reseting both players game boards
+	*/
 	resetGame() {
 
 		//set the current player to player 1
@@ -31,7 +38,12 @@ export class GameController {
 		this.players[1].gameBoard.resetBoard();
 	}
 
-	//Generate a random valid coodinate by looking at board
+	/**
+	* Updates a cell or ship on the gameboard
+	*
+	* @param {GameBoard} board - a gameboard that we want to generate an attack for
+	* @returns {array} - [x, y], the coordinate of a valid attack for the board given
+	*/
 	generateRandomAttack(board) {
 
 		let x;
@@ -47,10 +59,16 @@ export class GameController {
 
 		} while (board.visited.has(key));
 		return [x, y];
-
-
 	}
 
+	/**
+	* Plays one round of battleship, using a coordinate to attack the opposing players board
+	*
+	* @param {array} coordinate - [x, y] desigating the coordinate being attacked.
+	* @returns {string} exitCode -  'Hit' if the attack results in a hit
+	* 								'Miss' if the attack results in a miss
+	* @returns {Player} - 			 Player object of the winning player if all ships are sunk
+	*/
 	playRound(coordinate) {
 
 		let otherPlayer;
