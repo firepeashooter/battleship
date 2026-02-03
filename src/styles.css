@@ -1,7 +1,27 @@
-h1 {
-	color: green;
+body {
+	display: flex;
+	flex-direction: column;
+
+	height: 100vh;
 }
 
-h2 {
-	color: red;
+
+.header {
+	display: flex;
+	flex: 1;
+
+	background-color: lightgreen;
+}
+
+.main {
+	display: flex;
+	flex: 10;
+	background-color: lightseagreen;
+}
+
+.footer {
+	display: flex;
+	flex: 1;
+
+	background-color: lightsalmon;
 }
