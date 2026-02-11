@@ -1,5 +1,8 @@
 import "../styles.css";
+import { ScreenController } from "./ScreenController";
 
-export function sum(a, b) {
-	return a + b;
-}
+
+
+let myScreen = new ScreenController()
+
+myScreen.updateScreen()
