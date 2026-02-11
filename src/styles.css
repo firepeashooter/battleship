@@ -1,3 +1,7 @@
+:root {
+	--popupBackground: #f0ead6;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -63,4 +67,24 @@ body {
 	align-items: center;
 
 	background-color: lightsalmon;
+}
+
+
+.dialog {
+	width: 300px;
+	height: 300px;
+	border: none;
+	padding: 30px;
+	background-color: var(--popupBackground);
+	border-radius: 10px;
+}
+
+::backdrop {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dialog.show {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }

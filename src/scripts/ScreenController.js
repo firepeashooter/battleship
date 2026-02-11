@@ -8,14 +8,16 @@ export class ScreenController {
 		this.boards = document.querySelectorAll('.board');
 
 		this.boardDim = 10;
-
-
-
-
+		this.modal = document.querySelectorAll('.dialog')
 
 	}
 
 
+	renderModal(modal) {
+
+		modal.showModal()
+
+	}
 
 	renderBoard(board) {
 
