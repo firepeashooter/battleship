@@ -71,12 +71,18 @@ body {
 
 
 .dialog {
+
 	width: 300px;
 	height: 300px;
 	border: none;
 	padding: 30px;
 	background-color: var(--popupBackground);
 	border-radius: 10px;
+}
+
+#passer.show {
+	justify-content: flex-start;
+
 }
 
 ::backdrop {
@@ -87,4 +93,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	align-items: center;
 }

@@ -1,9 +1,12 @@
+import { GameController } from "./gameController";
 
 export class ScreenController {
 
 	constructor() {
 
 		this.startBoard;
+
+		this.controller = new GameController("Ben", "Finnley")
 
 		this.boards = document.querySelectorAll('.board');
 
@@ -16,6 +19,16 @@ export class ScreenController {
 	renderModal(modal) {
 
 		modal.showModal()
+
+		//if the modal is the one that displays the player turn we need to get the player name
+		if (modal.id === "passer") {
+			const playerNameDisplay = document.querySelector("#player--name")
+
+			const playerName = this.controller.curPlayer.name
+
+			playerNameDisplay.textContent = playerName
+
+		}
 
 	}
 
