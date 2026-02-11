@@ -5,8 +5,7 @@ export class ScreenController {
 
 		this.startBoard;
 
-		this.boardOne = document.querySelector('.left--board');
-		this.boardTwo = document.querySelector('.right--board');
+		this.boards = document.querySelectorAll('.board');
 
 		this.boardDim = 10;
 
@@ -34,8 +33,11 @@ export class ScreenController {
 	updateScreen() {
 
 
-		this.renderBoard(this.boardOne);
-		this.renderBoard(this.boardTwo);
+
+		for (let i = 0; i < this.boards.length; i++) {
+			this.renderBoard(this.boards[i])
+
+		}
 
 	}
 

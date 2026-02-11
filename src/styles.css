@@ -24,12 +24,14 @@ body {
 
 .main {
 	display: flex;
+
+	justify-content: center;
 	flex: 10;
 	background-color: lightseagreen;
 }
 
 
-.left--board {
+.board {
 	display: grid;
 
 	width: 50%;
@@ -41,16 +43,7 @@ body {
 
 }
 
-.right--board {
-	display: grid;
 
-	width: 50%;
-
-	grid-template-columns: repeat(10, 1fr);
-	grid-template-rows: repeat(10, 1fr);
-	margin: 70px;
-	border: 8px solid black;
-}
 
 .cell {
 
