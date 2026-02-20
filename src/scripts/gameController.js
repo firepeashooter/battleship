@@ -92,4 +92,13 @@ export class GameController {
 	getCurrentPlayer() {
 		return this.curPlayer;
 	}
+
+	getOtherPlayer() {
+
+		if (this.curPlayer = this.players[0]) {
+			return this.players[1];
+		} else {
+			return this.players[0];
+		}
+	}
 }
