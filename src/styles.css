@@ -108,9 +108,15 @@ input {
 
 }
 
-#start--game.show>* {
-	border: 8px solid black;
+#start--game.show {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
+
+/* #start--game.show>* { */
+/* 	border: 8px solid black; */
+/* } */
 
 #start--game.show>.bottom {
 
@@ -121,12 +127,18 @@ input {
 
 #start--game--form {
 	display: flex;
-	height: 100%;
 	flex-direction: column;
 
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 
+	height: 100%;
+}
+
+.input {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 
