@@ -47,7 +47,7 @@ export class ScreenController {
 
 
 	//Renders the start board to place ships
-	renderStart() {
+	renderPlaceShips() {
 		const startBoard = document.createElement("div")
 		startBoard.classList.add("board")
 		this.main.appendChild(startBoard);
@@ -63,6 +63,20 @@ export class ScreenController {
 
 	//Rerenders both boards with updated visuals
 	updateScreen() {
+		//clear main
+		this.main.textContent = '';
+
+		//rerender the board
+		const board1 = document.createElement("div")
+		board1.classList.add("board")
+		this.main.appendChild(board1);
+
+		const board2 = document.createElement("div")
+		board2.classList.add("board")
+		this.main.appendChild(board2);
+
+
+		this.boards = document.querySelectorAll('.board');
 
 		for (let i = 0; i < this.boards.length; i++) {
 			this.renderBoard(this.boards[i])
