@@ -70,7 +70,8 @@ input:invalid {
 	height: 600px;
 	width: 600px;
 
-	/* width: 50%; */
+	background-color: whitesmoke;
+
 
 	grid-template-columns: repeat(10, 1fr);
 	grid-template-rows: repeat(10, 1fr);
@@ -114,6 +115,10 @@ input:invalid {
 #passer.show {
 	justify-content: flex-start;
 
+}
+
+.continue--button {
+	padding: 10px;
 }
 
 
