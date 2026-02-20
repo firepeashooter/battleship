@@ -11,6 +11,16 @@ body {
 	height: 100vh;
 }
 
+label {
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	margin: 0;
+	padding: 0;
+}
+
 
 
 .header {
@@ -38,8 +48,6 @@ body {
 
 	width: 200px;
 	height: 70%;
-
-
 
 
 }
@@ -99,6 +107,28 @@ body {
 	justify-content: flex-start;
 
 }
+
+#start--game.show>* {
+	border: 8px solid black;
+}
+
+#start--game.show>.bottom {
+
+	width: 80%;
+	height: 60%;
+}
+
+
+#start--game--form {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+
+	justify-content: center;
+	align-items: center;
+
+}
+
 
 ::backdrop {
 	background-color: rgba(0, 0, 0, 0.8);
