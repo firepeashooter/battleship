@@ -6,7 +6,7 @@ export class GameController {
 
 	constructor(playerOne = 'PlayerOne', playerTwo = 'Player2') {
 
-		this.players = [new Player(playerOne, 'real'), new Player(playerTwo, 'real')];
+		this.players = [new Player(playerOne, 'real'), new Player(playerTwo, 'bot')];
 		this.curPlayer = this.players[0];
 	}
 
@@ -72,6 +72,7 @@ export class GameController {
 	playRound(coordinate) {
 
 		let otherPlayer;
+		let exitCode;
 
 		if (this.curPlayer == this.players[0]) {
 			otherPlayer = this.players[1];
@@ -79,9 +80,13 @@ export class GameController {
 			otherPlayer = this.players[0];
 		}
 
-		let exitCode = otherPlayer.gameBoard.recieveAttack(coordinate);
+		try {
+			exitCode = otherPlayer.myGameBoard.recieveAttack(coordinate);
+		} catch (error) {
+			return 'Invalid Attack';
+		}
 
-		if (otherPlayer.gameBoard.getGameOver()) {
+		if (otherPlayer.myGameBoard.getGameOver()) {
 			return this.curPlayer;
 		}
 

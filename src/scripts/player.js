@@ -5,6 +5,9 @@ export class Player {
 	constructor(name, type) {
 		this.name = name;
 		this.type = type;
-		this.gameBoard = new Gameboard(10);
+		this.myGameBoard = new Gameboard(10);
+		this.visibleOppGameBoard = new Gameboard(10);
 	}
+
+
 }
