@@ -35,6 +35,20 @@ body {
 	background-color: lightseagreen;
 }
 
+.ship--container {
+
+	border: 8px solid black;
+
+	width: 200px;
+	height: 70%;
+
+
+
+
+}
+
+
+
 
 .board {
 	display: grid;
