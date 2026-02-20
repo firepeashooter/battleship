@@ -7,4 +7,4 @@ let myScreen = new ScreenController()
 
 myScreen.updateScreen()
 
-myScreen.renderModal(myScreen.modal[1])
+// myScreen.renderModal(myScreen.modal[1])
