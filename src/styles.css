@@ -16,6 +16,25 @@ label {
 	padding: 0;
 }
 
+input {
+	border: none;
+	border: 2px solid black;
+	padding: 5px;
+	border-radius: 5px;
+
+}
+
+input:focus {
+	outline: none;
+	border: 2px solid #6495ED;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	;
+}
+
+input:invalid {
+	border-color: #FF4500;
+}
+
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -81,6 +100,7 @@ label {
 }
 
 
+
 .dialog {
 
 	width: 300px;
@@ -136,7 +156,6 @@ label {
 	padding: 10px;
 }
 
-
 .text--input {
 	display: flex;
 	flex-direction: column;
@@ -155,6 +174,11 @@ label {
 
 .check--input.hide {
 	display: none;
+}
+
+.start--game--button {
+	padding: 10px;
+	margin-top: 20px;
 }
 
 ::backdrop {

@@ -5,5 +5,7 @@ import { ScreenController } from "./ScreenController";
 
 let myScreen = new ScreenController()
 
+myScreen.updateScreen()
+
 
 myScreen.renderModal(myScreen.modals[0]);
