@@ -16,13 +16,6 @@ label {
 	padding: 0;
 }
 
-input {
-	margin: 0;
-	padding: 0;
-}
-
-
-
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -52,9 +45,6 @@ input {
 
 }
 
-
-
-
 .board {
 	display: grid;
 
@@ -69,8 +59,6 @@ input {
 	border: 8px solid black;
 
 }
-
-
 
 .cell {
 
@@ -108,10 +96,13 @@ input {
 
 }
 
+
+
 #start--game.show {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: start;
+	align-items: center;
 }
 
 /* #start--game.show>* { */
@@ -135,12 +126,36 @@ input {
 	height: 100%;
 }
 
+.start--form--top {
+	display: flex;
+	flex-direction: column;
+}
+
 .input {
+	display: flex;
+	padding: 10px;
+}
+
+
+.text--input {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+
+	padding-right: 10px;
 }
 
+.check--input {
+	display: flex;
+	flex-direction: column;
+
+	justify-content: center;
+	align-items: center;
+}
+
+.check--input.hide {
+	display: none;
+}
 
 ::backdrop {
 	background-color: rgba(0, 0, 0, 0.8);
