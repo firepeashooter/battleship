@@ -9,7 +9,7 @@ export class ScreenController {
 		this.boards;
 		this.main = document.querySelector('.main');
 		this.boardDim = 10;
-		this.modal = document.querySelectorAll('.dialog')
+		this.modals = document.querySelectorAll('.dialog')
 
 	}
 
@@ -17,7 +17,8 @@ export class ScreenController {
 	//Helper function to render an individual modal (based on which we need)
 	renderModal(modal) {
 
-		modal.showModal()
+		modal.showModal();
+		modal.classList.add("show");
 
 		//if the modal is the one that displays the player turn we need to get the player name
 		if (modal.id === "passer") {
@@ -26,9 +27,13 @@ export class ScreenController {
 			const playerName = this.controller.curPlayer.name
 
 			playerNameDisplay.textContent = playerName
-
 		}
+	}
 
+	hideModal(modal) {
+
+		modal.classList.remove("show");
+		modal.close();
 	}
 
 	//Helper function to render an indivdual board
